@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       if (user.username === defaultUser.username && user.password === defaultUser.password) {
           // log user in, store in local storage, navigate to contacts page
           this.localStorageService.saveItemsToLocalStorage(user);
-          this.router.navigate(['contacts', user]);
+          this.router.navigate(['cart', user]);
           // ^ navigates to the contacts page, specified in routes.
       } else {
         this.toastService.showToast('warning', 2000, 'Login failed! Please check username/password.');

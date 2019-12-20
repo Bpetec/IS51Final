@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastService } from '../toast/toast.service';
 import { Subject } from 'rxjs';
-import { LocalStorageService } from '../localStorageService';
 
 export interface IUser {
   id?: number;
@@ -15,11 +14,10 @@ export interface IUser {
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  localStorageService: LocalStorageService<IUser>;
+  user: IUser = {username: '', password: ''};
   currentUser: IUser = null;
-  constructor(private router: Router, private toastService: ToastService) {
-    this.localStorageService = new LocalStorageService('user');
 
+  constructor(private router: Router, private toastService: ToastService) {
   }
 
   ngOnInit() {
@@ -31,15 +29,14 @@ export class LoginComponent implements OnInit {
     if (user.username !== '' && user.password !== '') {
       if (user.username === defaultUser.username && user.password === defaultUser.password) {
           // log user in, store in local storage, navigate to contacts page
-          this.localStorageService.saveItemsToLocalStorage(user);
+          // this.localStorageService.saveItemsToLocalStorage(user);
           this.router.navigate(['cart', user]);
           // ^ navigates to the contacts page, specified in routes.
       } else {
-        this.toastService.showToast('warning', 2000, 'Login failed! Please check username/password.');
+        this.toastService.showToast('warning', 2000, 'Login failed! Please check username/password.',);
       }
       } else {
         this.toastService.showToast('warning', 2000, 'Login failed! Please enter a username and password.');
       }
     }
-
 }

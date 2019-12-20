@@ -96,7 +96,8 @@ export class CartComponent implements OnInit {
       return {
         total: total,
         taxAmt: taxAmt,
-        subTotal: subTotal
+        subTotal: subTotal,
+        nameInput2: this.nameInput
       };
     }
   }

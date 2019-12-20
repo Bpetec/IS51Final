@@ -14,6 +14,7 @@ import { MaterialDesignModule } from '../material-design/material-design.module'
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
+import { LocalStorageService } from './localStorageService';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CartComponent } from './cart/cart.component';
     ToastModule,
     AppRoutes,
     BrowserAnimationsModule,
-    MaterialDesignModule
+    MaterialDesignModule,
+    LocalStorageService
   ],
   providers: [],
   bootstrap: [AppComponent]
